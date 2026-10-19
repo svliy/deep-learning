@@ -33,14 +33,16 @@ class VGG(nn.Module):
         for out_channels, count in zip(
             (64, 128, 256, 512, 512), VGG_BLOCKS[model_name], strict=True
         ):
+            # 先添加 count 个卷积层，每个卷积后接 ReLU
             for _ in range(count):
                 layers.extend(
                     [
-                        nn.Conv2d(in_channels, out_channels, kernel_size=3, padding=1),
+                        nn.Conv2d(in_channels, out_channels, kernel_size=3, stride=1, padding=1),
                         nn.ReLU(inplace=True),
                     ]
                 )
                 in_channels = out_channels
+            # 每个阶段后接一次池化，输出尺寸减半
             layers.append(nn.MaxPool2d(kernel_size=2, stride=2))
         # 五次池化：224 -> 112 -> 56 -> 28 -> 14 -> 7。
         self.features = nn.Sequential(*layers)
@@ -60,7 +62,8 @@ class VGG(nn.Module):
         if x.ndim != 4 or tuple(x.shape[1:]) != (3, 224, 224):
             raise ValueError("VGG 输入必须是 [N, 3, 224, 224]")
         x = self.features(x)  # [N, 512, 7, 7]
-        return self.classifier(x.flatten(start_dim=1))
+        x = x.flatten(start_dim=1)  # [N, 512*7*7]
+        return self.classifier(x)  # [N, num_classes]
 
     def _initialize_weights(self) -> None:
         """沿用教程：卷积和全连接权重使用 Xavier uniform，偏置置零。"""
