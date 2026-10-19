@@ -1,0 +1,15 @@
+# 相对路径以项目根目录为基准。
+model_name: lenet
+experiment_name: lenet_cifar10
+data_dir: dataset/data
+# 实验输出根目录；每次运行保存到 output_dir/experiment_name/运行时间/。
+output_dir: outputs
+epochs: 10
+batch_size: 36
+learning_rate: 0.001
+# 每训练多少个 batch 输出一次进度；每轮最后一个 batch 也会输出。
+log_interval: 200
+num_workers: 0
+seed: 42
+# 可选 auto、cpu、cuda 或 cuda:N；例如 cuda:1 表示编号为 1 的可见 GPU。
+device: cuda:0

@@ -1,0 +1,8 @@
+# 与 llms 环境中已验证的版本保持一致（CUDA 构建后缀由安装源决定）。
+torch==2.8.0
+torchvision==0.23.0
+numpy>=1.26,<3
+Pillow>=10,<13
+PyYAML>=6,<7
+tensorboard>=2.18,<3
+matplotlib>=3.8,<4

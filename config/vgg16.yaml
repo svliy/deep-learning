@@ -1,0 +1,13 @@
+# 教程中的标准 VGG16（无 BatchNorm），输入为 224×224，花卉五分类。
+model_name: vgg16
+experiment_name: vgg16_flowers
+data_dir: dataset/data/flower_data
+output_dir: outputs
+epochs: 30
+# VGG 的标准分类器较大；先从小 batch 开始，再按设备容量调整。
+batch_size: 2
+learning_rate: 0.0001
+log_interval: 20
+num_workers: 0
+seed: 42
+device: auto

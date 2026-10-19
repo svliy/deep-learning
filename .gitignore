@@ -1,0 +1,53 @@
+# Python 缓存与检查产物
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+.ipynb_checkpoints/
+
+# 本地 Python 环境与构建产物
+.venv/
+venv/
+env/
+ENV/
+build/
+dist/
+*.egg-info/
+
+# 本地数据与实验产物；保留 dataset/ 源码和 asserts/images/ 示例图片
+/dataset/data/
+/outputs/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+events.out.tfevents.*
+*.log
+
+# 本地环境变量与凭据；允许提交环境变量示例
+.env
+.env.*
+!.env.example
+.aws/
+
+# 编辑器个人设置；保留可共享的 VS Code 调试与扩展配置
+.vscode/*
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# 操作系统生成文件
+.DS_Store
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,15 @@
+# AlexNet / 清理后的 flower_data，图片输入为 224×224。
+model_name: alexnet
+experiment_name: alexnet_flowers
+data_dir: dataset/data/flower_data
+# 每次运行保存到 output_dir/experiment_name/运行时间/。
+output_dir: outputs
+epochs: 10
+batch_size: 32
+learning_rate: 0.0002
+# 每隔多少个 batch 输出一次训练进度，最后一个 batch 也会输出。
+log_interval: 20
+num_workers: 0
+seed: 42
+# 支持 auto、cpu、cuda、cuda:N，例如 cuda:1。
+device: cuda:0
